@@ -43,16 +43,8 @@ category= ttk.Entry(frame, width= 40)
 category.insert(INSERT, "Enter Category")
 category.pack()
 ExDate= ttk.Entry(frame, width= 40)
-ExDate.insert(INSERT, "Enter Expiry Date as dd/mm/yy")
+ExDate.insert(INSERT, "Enter Expiry Date as mm/dd/yy")
 ExDate.pack()
-
-# # calendar convert date into integer for sorting
-# date = str(ExDate.get())
-# day = date[3:5]
-# month = date[0:2]
-# year = date[6:8]
-# print(month)
-# numdate = int(day) + int(month) * 10 + int(year) * 100
 
 #Define a function to show a message
 def add_item():
@@ -63,6 +55,31 @@ def add_item():
    year = date[6:8]
    numdate = int(day) + int(month) * 10 + int(year) * 100
    print(numdate)
+   # turn today's date into an integer
+   now = dt.date.today()
+
+   todayyear = now.strftime("%Y")
+   print("year:", todayyear)
+
+   todaymonth = now.strftime("%m")
+   print("month:", todaymonth)
+
+   todayday = now.strftime("%d")
+   print("day:", todayday)
+
+   time = now.strftime("%H:%M:%S")
+   print("time:", time)
+
+   date_time = now.strftime("%m/%d/%Y, %H:%M:%S")
+   print("date and time:",date_time)
+   print(todaymonth[0:2])	
+   print(todayyear[2:4])
+   print(todayday[0:2])
+   numtoday = int(todayday[0:2]) + int(todaymonth[0:2]) * 10 + int(todayyear[2:4]) * 100
+   print(numtoday)
+   # days until ExDate
+   print(numdate - numtoday)
+
    contents = str({"UID":str(uuid.uuid1()), "fooditem": fooditem.get(), "category": category.get(), "ExDate": numdate})
    label = Label(frame, text= contents, font= ('Times New Roman', 9, 'italic'))
    # fooditem.delete(0, 'end')
@@ -134,21 +151,31 @@ def sort():
    #    print(i.ExDate)
    #    print(sortlist.index(i))
 
-# #Creates a Frame
-# frame = LabelFrame(win, width= 400, height= 180, bd=5)
-# frame.pack()
-# #Stop the frame from propagating the widget to be shrink or fit
-# frame.pack_propagate(False)
-
 #Create a Button
 # ttk.Button(win, text= "Click", command= myclick).pack(pady=20)
 ttk.Button(win, text= "Add Item", command= add_item).pack(pady=20)
 ttk.Button(win, text= "Sort", command = sort).pack(pady=20)
 win.mainloop()
 
-# fooditems = {
-#   "id" : uuid.uuid1(),
-#   "fooditem": fooditem.get(),
-#   "category": category.get(),
-#   "ExDate": ExDate.get()
-# }
+# turn today's date into an integer
+# now = dt.date.today()
+
+# todayyear = now.strftime("%Y")
+# print("year:", todayyear)
+
+# todaymonth = now.strftime("%m")
+# print("month:", todaymonth)
+
+# todayday = now.strftime("%d")
+# print("day:", todayday)
+
+# time = now.strftime("%H:%M:%S")
+# print("time:", time)
+
+# date_time = now.strftime("%m/%d/%Y, %H:%M:%S")
+# print("date and time:",date_time)
+# print(todaymonth[0:2])	
+# print(todayyear[2:4])
+# print(todayday[0:2])
+# numtoday = int(todayday[0:2]) + int(todaymonth[0:2]) * 10 + int(todayyear[2:4]) * 100
+# print(numtoday)
