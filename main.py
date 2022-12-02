@@ -13,8 +13,6 @@ import uuid
 import os
 from pathlib import Path
 
-
-
 #Create an instance of tkinter frame
 win = Tk()
 #Set the geometry of tkinter frame
@@ -65,7 +63,6 @@ def add_item():
       with p.open('a') as f:
          f.write(contents)
 
-   
    # print(fridge)
    # # p.read_text()
 
@@ -131,5 +128,3 @@ win.mainloop()
 #   "category": category.get(),
 #   "ExDate": ExDate.get()
 # }
-
-
