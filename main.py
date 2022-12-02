@@ -1,10 +1,11 @@
-# Sources: Mr. Cozort
+# Sources: Mr. Cozort Datetime: https://www.geeksforgeeks.org/get-current-date-using-python/#:~:text=now(),defined%20under%20the%20DateTime%20module.
 
 # Fridge Project 2022
-# 1 Input Expiration Date and Item
-# 2 Add Item to List
-# 3 Sort List by Expiration Date
-# 4 Visual Component
+# 1 Input Item, Category, Expiration Date
+# 2 Add Data to a Dictionary
+# 3 Import Data to txt file
+# 4 Sort Dictionary by Expiration Date
+# 5 Visual Component
 
 # using os to create file, using tkinter for window
 from tkinter import *
@@ -12,6 +13,7 @@ from tkinter import ttk
 import uuid
 import os
 from pathlib import Path
+import datetime as dt
 
 #Create an instance of tkinter frame
 win = Tk()
@@ -27,9 +29,41 @@ fridge = []
 #    fooditem.delete(0, 'end')
 #    label.pack(pady=30)
 
+#Creates a Frame
+frame = LabelFrame(win, width= 400, height= 180, bd=5)
+frame.pack()
+#Stop the frame from propagating the widget to be shrink or fit
+frame.pack_propagate(False)
+
+#Create an Entry widget in the Frame
+fooditem= ttk.Entry(frame, width= 40)
+fooditem.insert(INSERT, "Enter Food")
+fooditem.pack()
+category= ttk.Entry(frame, width= 40)
+category.insert(INSERT, "Enter Category")
+category.pack()
+ExDate= ttk.Entry(frame, width= 40)
+ExDate.insert(INSERT, "Enter Expiry Date as dd/mm/yy")
+ExDate.pack()
+
+# # calendar convert date into integer for sorting
+# date = str(ExDate.get())
+# day = date[3:5]
+# month = date[0:2]
+# year = date[6:8]
+# print(month)
+# numdate = int(day) + int(month) * 10 + int(year) * 100
+
 #Define a function to show a message
 def add_item():
-   contents = str({"UID":str(uuid.uuid1()), "fooditem": fooditem.get(), "category": category.get(), "ExDate": ExDate.get()})
+   # calendar convert date into integer for sorting
+   date = str(ExDate.get())
+   day = date[3:5]
+   month = date[0:2]
+   year = date[6:8]
+   numdate = int(day) + int(month) * 10 + int(year) * 100
+   print(numdate)
+   contents = str({"UID":str(uuid.uuid1()), "fooditem": fooditem.get(), "category": category.get(), "ExDate": numdate})
    label = Label(frame, text= contents, font= ('Times New Roman', 9, 'italic'))
    # fooditem.delete(0, 'end')
    label.pack(pady=30)
@@ -54,11 +88,11 @@ def add_item():
    p = Path("data.txt")
    print(p.exists(), 'the file exists...')
    # write content into the file...
-   # fridge.append({"UID":uuid.uuid1(), "name": fooditem.get(), "ftype": category.get(), "ExDate": exp_date.get()})
+   # fridge.append({"UID":uuid.uuid1(), "name": fooditem.get(), "ftype": category.get(), "ExDate": ExDate.get()})
    if not p.exists():
       print("the file didn't exist...") 
       p.write_text(contents)
-   # p.write_text(exp_date.get())
+   # p.write_text(ExDate.get())
    else:
       with p.open('a') as f:
          f.write(contents)
@@ -100,22 +134,12 @@ def sort():
    #    print(i.ExDate)
    #    print(sortlist.index(i))
 
-#Creates a Frame
-frame = LabelFrame(win, width= 400, height= 180, bd=5)
-frame.pack()
-#Stop the frame from propagating the widget to be shrink or fit
-frame.pack_propagate(False)
+# #Creates a Frame
+# frame = LabelFrame(win, width= 400, height= 180, bd=5)
+# frame.pack()
+# #Stop the frame from propagating the widget to be shrink or fit
+# frame.pack_propagate(False)
 
-#Create an Entry widget in the Frame
-fooditem= ttk.Entry(frame, width= 40)
-fooditem.insert(INSERT, "Enter Food")
-fooditem.pack()
-category= ttk.Entry(frame, width= 40)
-category.insert(INSERT, "Enter Category")
-category.pack()
-ExDate= ttk.Entry(frame, width= 40)
-ExDate.insert(INSERT, "Enter Expiry Date")
-ExDate.pack()
 #Create a Button
 # ttk.Button(win, text= "Click", command= myclick).pack(pady=20)
 ttk.Button(win, text= "Add Item", command= add_item).pack(pady=20)
