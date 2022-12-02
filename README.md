@@ -6,7 +6,7 @@ A Sorting program that will take food, category, and expiration date and sort th
 
 ### Dependencies
 
-Need Python 3.10 and tkinter, os, and pathlib libraries
+Need Excel, Python 3.10, and tkinter, os, datetime, and pathlib libraries
 
 ### Installing
 
