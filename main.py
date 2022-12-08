@@ -1,4 +1,6 @@
-# Sources: Mr. Cozort Datetime: https://www.geeksforgeeks.org/get-current-date-using-python/#:~:text=now(),defined%20under%20the%20DateTime%20module.
+# Sources: Mr. Cozort 
+# Datetime: https://www.geeksforgeeks.org/get-current-date-using-python/#:~:text=now(),defined%20under%20the%20DateTime%20module.
+# Openpyxl: https://www.geeksforgeeks.org/python-writing-excel-file-using-openpyxl-module/
 
 # Fridge Project 2022
 # 1 Input Item, Category, Expiration Date
@@ -12,8 +14,11 @@ from tkinter import *
 from tkinter import ttk
 import uuid
 import os
+import sys 
 from pathlib import Path
+import pprint
 import datetime as dt
+import openpyxl
 
 #Create an instance of tkinter frame
 win = Tk()
@@ -54,33 +59,34 @@ def add_item():
    month = date[0:2]
    year = date[6:8]
    numdate = int(day) + int(month) * 10 + int(year) * 100
-   print(numdate)
+   print("this is your date: " + str(numdate))
    # turn today's date into an integer
    now = dt.date.today()
 
    todayyear = now.strftime("%Y")
-   print("year:", todayyear)
+   # print("year:", todayyear)
 
    todaymonth = now.strftime("%m")
-   print("month:", todaymonth)
+   # print("month:", todaymonth)
 
    todayday = now.strftime("%d")
-   print("day:", todayday)
+   # print("day:", todayday)
 
-   time = now.strftime("%H:%M:%S")
-   print("time:", time)
+   # time = now.strftime("%H:%M:%S")
+   # print("time:", time)
 
-   date_time = now.strftime("%m/%d/%Y, %H:%M:%S")
-   print("date and time:",date_time)
-   print(todaymonth[0:2])	
-   print(todayyear[2:4])
-   print(todayday[0:2])
+   # date_time = now.strftime("%m/%d/%Y, %H:%M:%S")
+   # print("date and time:",date_time)
+   
+   # print(todaymonth[0:2])	
+   # print(todayyear[2:4])
+   # print(todayday[0:2])
    numtoday = int(todayday[0:2]) + int(todaymonth[0:2]) * 10 + int(todayyear[2:4]) * 100
-   print(numtoday)
+   print("this is today's date: " + str(numtoday))
    # days until ExDate
-   print(numdate - numtoday)
-
-   contents = str({"UID":str(uuid.uuid1()), "fooditem": fooditem.get(), "category": category.get(), "ExDate": numdate})
+   daystill = numdate - numtoday
+   print("this the difference in date's: " + str(daystill))
+   contents = str({"UID":str(uuid.uuid1()), "fooditem": fooditem.get(), "category": category.get(), "ExDate": daystill})
    label = Label(frame, text= contents, font= ('Times New Roman', 9, 'italic'))
    # fooditem.delete(0, 'end')
    label.pack(pady=30)
@@ -150,6 +156,15 @@ def sort():
    #    print(i)
    #    print(i.ExDate)
    #    print(sortlist.index(i))
+
+# create and save excel file
+def excelfile():
+   wb = openpyxl.Workbook()
+   ws = wb.active
+   ws.title = "FridgeData1"
+   wb.save('C:/github/dataFolder/FridgeData.xlsx')
+
+excelfile()
 
 #Create a Button
 # ttk.Button(win, text= "Click", command= myclick).pack(pady=20)
