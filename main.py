@@ -10,6 +10,11 @@
 # 5 Visual Component
 
 # using os to create file, using tkinter for window
+# will use sys to exit program
+# using openpyxl to read and write in excel
+# using datetime to grab current date
+# using uuid to generate random uuid
+# using pathlib to locate file
 from tkinter import *
 from tkinter import ttk
 import uuid
@@ -164,7 +169,7 @@ def excelfile():
    ws.title = "FridgeData1"
    wb.save('C:/github/dataFolder/FridgeData.xlsx')
 
-excelfile()
+# excelfile()
 
 #Create a Button
 # ttk.Button(win, text= "Click", command= myclick).pack(pady=20)
@@ -194,3 +199,23 @@ win.mainloop()
 # print(todayday[0:2])
 # numtoday = int(todayday[0:2]) + int(todaymonth[0:2]) * 10 + int(todayyear[2:4]) * 100
 # print(numtoday)
+
+
+# Check if excel file exists
+excel_file = "FridgeData.xlsx"
+try:
+    wb = openpyxl.load_workbook(excel_file)
+    sheet = wb.active
+except FileNotFoundError:
+    wb = openpyxl.Workbook()
+    sheet = wb.active
+    sheet.cell(1, 1).value = fooditem.get()
+    sheet.cell(1, 2).value = category.get()
+
+# Store user data in excel file
+last_row = sheet.max_row
+sheet.cell(last_row + 1, 1).value = fooditem.get()
+sheet.cell(last_row + 1, 2).value = category.get()
+
+# Save the excel file
+wb.save(excel_file)
