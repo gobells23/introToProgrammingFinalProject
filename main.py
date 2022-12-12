@@ -1,6 +1,9 @@
+# Fridge Project by: Gary Soo 
 # Sources: Mr. Cozort 
 # Datetime: https://www.geeksforgeeks.org/get-current-date-using-python/#:~:text=now(),defined%20under%20the%20DateTime%20module.
 # Openpyxl: https://www.geeksforgeeks.org/python-writing-excel-file-using-openpyxl-module/
+# Tkinter with Openpyxl: https://www.youtube.com/watch?v=l6-HG0FJPsQ
+
 
 # Fridge Project 2022
 # 1 Input Item, Category, Expiration Date
@@ -70,22 +73,11 @@ def add_item():
 
    todayyear = now.strftime("%Y")
    # print("year:", todayyear)
-
    todaymonth = now.strftime("%m")
    # print("month:", todaymonth)
-
    todayday = now.strftime("%d")
    # print("day:", todayday)
 
-   # time = now.strftime("%H:%M:%S")
-   # print("time:", time)
-
-   # date_time = now.strftime("%m/%d/%Y, %H:%M:%S")
-   # print("date and time:",date_time)
-   
-   # print(todaymonth[0:2])	
-   # print(todayyear[2:4])
-   # print(todayday[0:2])
    numtoday = int(todayday[0:2]) + int(todaymonth[0:2]) * 10 + int(todayyear[2:4]) * 100
    print("this is today's date: " + str(numtoday))
    # days until ExDate
@@ -176,30 +168,6 @@ def excelfile():
 ttk.Button(win, text= "Add Item", command= add_item).pack(pady=20)
 ttk.Button(win, text= "Sort", command = sort).pack(pady=20)
 win.mainloop()
-
-# turn today's date into an integer
-# now = dt.date.today()
-
-# todayyear = now.strftime("%Y")
-# print("year:", todayyear)
-
-# todaymonth = now.strftime("%m")
-# print("month:", todaymonth)
-
-# todayday = now.strftime("%d")
-# print("day:", todayday)
-
-# time = now.strftime("%H:%M:%S")
-# print("time:", time)
-
-# date_time = now.strftime("%m/%d/%Y, %H:%M:%S")
-# print("date and time:",date_time)
-# print(todaymonth[0:2])	
-# print(todayyear[2:4])
-# print(todayday[0:2])
-# numtoday = int(todayday[0:2]) + int(todaymonth[0:2]) * 10 + int(todayyear[2:4]) * 100
-# print(numtoday)
-
 
 # Check if excel file exists
 excel_file = "FridgeData.xlsx"
