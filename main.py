@@ -184,10 +184,10 @@ def sort():
     def printfood(self):
         wb = openpyxl.load_workbook(self.file)
         sheet = wb.active
-        print(sheet['A2'].value)
-        print(sheet['C3'].value)
+        print("Oldest Food: " + str(sheet['B2'].value))
+        print("And its expiration date: " + str(sheet['D2'].value))
 
-   oldfood = OldestFood('FridgeData.xlsx')
+   oldfood = OldestFood('SortedFridgeData.xlsx')
    oldfood.printfood()
 
 # Clears excel file
