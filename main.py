@@ -109,9 +109,9 @@ def add_item():
    year = date[6:8]
    print("entered year:" + year)
 
-# Check if entry is integer or not
-#    if isinstance(day, int) == False:
-#     messagebox.showinfo("Try Again", "Date not in correct format")
+#Check if entry is integer or not
+   if isinstance(day, int) == False and isinstance(month, int) == False and isinstance(month, int) == False:
+    messagebox.showinfo("Try Again", "Date not in correct format")
 
    numdate = int(day) + int(month) * 30 + int(year) * 365
    print("this is your date: " + str(numdate))
