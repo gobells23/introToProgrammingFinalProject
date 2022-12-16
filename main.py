@@ -23,6 +23,16 @@
 # using datetime to grab current date
 # using uuid to generate random uuid
 # using pathlib to locate file
+
+#Auto install libraries
+import pip
+pip.main(["install", "pandas"])
+pip.main(["install", "tkinter"])
+pip.main(["install", "openpyxl"])
+pip.main(["install", "tkinter"])
+pip.main(["install", "pathlib"])
+pip.main(["install", "datetime"])
+# pip.main(["install", "pandasgui"])
 from tkinter import *
 from tkinter import ttk
 from tkinter import messagebox
@@ -34,15 +44,7 @@ import pprint
 import datetime as dt
 import openpyxl
 import pandas as pd
-import pip
-
-#Auto install libraries
-pip.main(["install", "pandas"])
-pip.main(["install", "tkinter"])
-pip.main(["install", "openpyxl"])
-pip.main(["install", "tkinter"])
-pip.main(["install", "pathlib"])
-pip.main(["install", "datetime"])
+# import pandasgui
 
 print(str(Path.cwd()))
 os.chdir(Path.cwd())
@@ -166,13 +168,13 @@ def sort():
    final_result = df.sort_values(df.columns[2], ascending=True)
    # df = df.sort_values("C", ascending=False)
 
-   # Creates Excel File with sorted data
+   # Creates Excel File with sorted data and prints sorted data in terminal
    print()
    print()
    print()
    print(final_result)
    final_result.to_excel('SortedFridgeData.xlsx')
-   messagebox.showinfo("Success", "Data Sort Complete")
+   messagebox.showinfo("Success", "Data Sort Complete, Printed in Terminal")
 
 # Clears excel file
 def clear_data():
