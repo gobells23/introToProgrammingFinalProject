@@ -30,8 +30,10 @@ from pathlib import Path
 import pprint
 import datetime as dt
 import openpyxl
+import pandas as pd
 
 print(str(Path.cwd()))
+os.chdir(Path.cwd())
 
 # Check to see if file exist, if not create new file
 if os.path.exists('FridgeData.xlsx'):
@@ -97,14 +99,12 @@ def add_item():
    print("this is your date: " + str(numdate))
    # turn today's date into an integer
    now = dt.date.today()
-
    todayyear = now.strftime("%Y")
    print("year:", todayyear)
    todaymonth = now.strftime("%m")
    print("month:", todaymonth)
    todayday = now.strftime("%d")
    print("day:", todayday)
-
    numtoday = int(todayday[0:2]) + int(todaymonth[0:2]) * 30 + int(todayyear[2:4]) * 365
    print("test" + todayyear[2:4])
    print("this is today's date: " + str(numtoday))
