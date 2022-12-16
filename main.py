@@ -8,14 +8,15 @@
 # Sort Function: https://www.freecodecamp.org/news/python-sort-list-how-to-order-by-descending-or-ascending/
 # Pandas: https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.sort_values.html
 # Pandas: https://www.geeksforgeeks.org/add-column-names-to-dataframe-in-pandas/
+# Pandas: https://www.geeksforgeeks.org/how-to-sort-date-in-excel-using-pandas/
 # Pip: https://pypi.org/
 
 # Fridge Project 2022
 # 1 Input Item, Category, Expiration Date
-# 2 Add Data to a Dictionary
-# 3 Import Data to txt file
-# 4 Sort Dictionary by Expiration Date
-# 5 Visual Component
+# 2 Add Data to excel file
+# 3 Sort Data in excel file
+# 4 Display Sorted Data
+# 5 Store Data
 
 # using os to create file, using tkinter for window
 # will use sys to exit program
