@@ -2,11 +2,11 @@
 
 ## Description
 
-A Sorting program that will take food, category, and expiration date and sort the food by category and expiration date
+A sorting program that will take food, category, and expiration date and sort the food by expiration date in an excel file
 
 ### Dependencies
 
-Need Excel, Python 3.10, and tkinter, os, datetime, and pathlib libraries
+Need Excel, Python 3.10, and tkinter, datetime, pandas, openpyxl, and pathlib libraries (although program should autoinstall them)
 
 ### Installing
 
@@ -14,20 +14,23 @@ Download Anywhere
 
 ### Executing program
 
-*Run program
+*Run Program
 
 ## Help
 
 Enter items in the panel
+Make sure format for date is correct
+Do not have the excel file open while running the program
 
 ## Authors
-
-Contributors names and contact info
 
 made by Gary
 
 ## Version History
-
+* 0.3
+    * Various bug fixes and optimizations
+    * See [commit change]() or See [release history]()
+    * Added sort function
 * 0.2
     * Various bug fixes and optimizations
     * See [commit change]() or See [release history]()
