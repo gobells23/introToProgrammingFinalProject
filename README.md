@@ -14,7 +14,8 @@ Download Anywhere
 
 ### Executing program
 
-*Run Program
+Open main.py and run program
+Click buttons to run functions
 
 ## Help
 
@@ -27,6 +28,7 @@ Do not have the excel file open while running the program
 made by Gary
 
 ## Version History
+* Currently working on GUI and format checker
 * 0.3
     * Various bug fixes and optimizations
     * See [commit change]() or See [release history]()
