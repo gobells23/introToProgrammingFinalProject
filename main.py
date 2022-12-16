@@ -109,9 +109,9 @@ def add_item():
    year = date[6:8]
    print("entered year:" + year)
 
-#Check if entry is integer or not
-   if isinstance(day, int) == False and isinstance(month, int) == False and isinstance(month, int) == False:
-    messagebox.showinfo("Try Again", "Date not in correct format")
+# #Check if entry is integer or not
+#    if isinstance(day, int) == False and isinstance(month, int) == False and isinstance(month, int) == False:
+#     messagebox.showinfo("Try Again", "Date not in correct format")
 
    numdate = int(day) + int(month) * 30 + int(year) * 365
    print("this is your date: " + str(numdate))
@@ -159,6 +159,7 @@ def add_item():
 def sort():
    # Open excel file
    wb = openpyxl.load_workbook("FridgeData.xlsx")
+   ws = wb.active
    sheet = wb["Sheet1"]
 
    # Get excel file, open sheet 1, then sort the 3nd column from smallest to largest
@@ -175,6 +176,19 @@ def sort():
    print(final_result)
    final_result.to_excel('SortedFridgeData.xlsx')
    messagebox.showinfo("Success", "Data Sort Complete, Printed in Terminal")
+
+   class OldestFood:
+    def __init__(self, file):
+        self.file = file
+
+    def printfood(self):
+        wb = openpyxl.load_workbook(self.file)
+        sheet = wb.active
+        print(sheet['A2'].value)
+        print(sheet['C3'].value)
+
+   oldfood = OldestFood('FridgeData.xlsx')
+   oldfood.printfood()
 
 # Clears excel file
 def clear_data():
