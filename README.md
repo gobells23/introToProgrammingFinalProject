@@ -15,12 +15,15 @@ Download Anywhere
 ### Executing program
 
 Open main.py and run program
+
 Click buttons to run functions
 
 ## Help
 
 Enter items in the panel
+
 Make sure format for date is correct
+
 Do not have the excel file open while running the program
 
 ## Authors
